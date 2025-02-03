@@ -1,3 +1,6 @@
+// import java.util.ArrayList;
+import java.util.*;
+
 public class Sponge {
 
   /*
@@ -33,7 +36,58 @@ public class Sponge {
 
   // Implement your solution here!
   public static String spongeCase(String sentence) {
-    return null;
+    /*
+     * create list to go through sentence 
+     * use list to break up words
+     * go through list and also go throug words turn into spongecase
+     * put sentence backtogether and print
+     * 
+     * maybe use if statements to make simpler
+     */
+
+    char charList = new [];
+    sentence = sentence.toLowerCase();  
+    charList = sentence.toCharArray();
+    int spaceCount = 0;
+
+    for(int i = 0; i < charList.length(); i++)
+    {
+      if((charList[i] != ' ') && ((i-spaceCount) % 2 != 0))
+      {
+        charList[i] = charList[i].toUpperCase();
+      }
+      else if((charList[i] != ' ') && ((i) % 2 == 0))
+      {
+        charList[i] = charList[i].toLowerCase();
+      }
+      else
+      {
+        spaceCount++;
+        if(spaceCount%2 != 0)
+        {
+          spaceCount = 1;
+        }
+        else
+        {
+          spaceCount = 0;
+        }
+      }
+    }
+    String newSentence = ""; //how far i got in 30 initial mins
+
+    for(int i = 0; i < charList.length(); i++)
+    {
+      if(charList[i] != ' ')
+      {
+        newSentence += charList[i];
+      }
+      else
+      {
+        newSentence += " ";
+      }
+    }
+
+    return newSentence;
   }
 
 
