@@ -45,49 +45,80 @@ public class Sponge {
      * maybe use if statements to make simpler
      */
 
-    char charList = new [];
-    sentence = sentence.toLowerCase();  
-    charList = sentence.toCharArray();
-    int spaceCount = 0;
+     //initial solution 
+    // char [] charList;
+    // sentence = sentence.toLowerCase();  
+    // charList = sentence.toCharArray();
+    // int spaceCount = 0;
 
-    for(int i = 0; i < charList.length(); i++)
+    // for(int i = 0; i < charList.length; i++)
+    // {
+    //   if((charList[i] != ' ') && ((i-spaceCount) % 2 != 0))
+    //   {
+    //     charList[i] = Character.toUpperCase(charList[i]);
+    //   }
+    //   else if((charList[i] != ' ') && ((i-spaceCount) % 2 == 0))
+    //   {
+    //     charList[i] = Character.toLowerCase(charList[i]);
+    //   }
+    //   else
+    //   {
+    //     spaceCount++;
+    //   }
+    // }
+    // String newSentence = ""; //how far i got in 30 initial mins
+
+    // for(int i = 0; i < charList.length; i++)
+    // {
+    //   if(charList[i] != ' ')
+    //   {
+    //     newSentence += charList[i];
+    //   }
+    //   else
+    //   {
+    //     newSentence += " ";
+    //   }
+    // }
+
+    //revised solution
+    String[] words = sentence.split(" ");
+    String newSentence = "";
+    List <String> newWords = new ArrayList<>();
+
+    for(String word : words)
     {
-      if((charList[i] != ' ') && ((i-spaceCount) % 2 != 0))
+      String newWord = "";
+      if(word != " ")
       {
-        charList[i] = charList[i].toUpperCase();
-      }
-      else if((charList[i] != ' ') && ((i) % 2 == 0))
-      {
-        charList[i] = charList[i].toLowerCase();
-      }
-      else
-      {
-        spaceCount++;
-        if(spaceCount%2 != 0)
+        char [] chars = word.toCharArray();
+        for(int i = 0; i < chars.length; i++)
         {
-          spaceCount = 1;
+          if(i % 2 != 0) 
+          {
+            chars[i] = Character.toUpperCase(chars[i]);
+            //System.out.println(chars[i]);
+          }
+          else if(i % 2 == 0)
+          {
+            chars[i] = Character.toLowerCase(chars[i]);
+           // System.out.println(chars[i]);
+          }
         }
-        else
+        for(char c : chars)
         {
-          spaceCount = 0;
+          newWord += c;
         }
+        newWords.add(newWord);
+        //System.out.println(newWord);
       }
     }
-    String newSentence = ""; //how far i got in 30 initial mins
 
-    for(int i = 0; i < charList.length(); i++)
+    for(String word : newWords)
     {
-      if(charList[i] != ' ')
-      {
-        newSentence += charList[i];
-      }
-      else
-      {
-        newSentence += " ";
-      }
+      newSentence += word + " ";
     }
 
-    return newSentence;
+    return newSentence.substring(0, newSentence.length()-1);
   }
 
 
