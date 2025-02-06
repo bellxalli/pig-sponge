@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Pig {
 
     /*
@@ -24,9 +26,43 @@ public class Pig {
         assertEqual(5, pigLatin("e"), "e");
     }
 
-    // Implement your solution here!
+    //Implement your solution here!
+    //if statement for vowels
+    //iterate over string
+    //else if cons then move first letter to back and add ay
+
+
     public static String pigLatin(String sentence) {
-        return null;
+        String pigSentence = "";
+
+        String [] brokenSentence;
+        String regex = " ";
+        brokenSentence = sentence.split(regex);
+
+
+        List<String> pigBrokenSentence = new ArrayList<>();
+
+
+        for(String x : brokenSentence)
+        {   String newWord = "";
+            if(x.charAt(0) != 'a' || x.charAt(0) != 'e' || x.charAt(0) != 'i' || x.charAt(0) != 'o' || x.charAt(0) != 'u') 
+            {
+                newWord = x.substring(1, x.length());
+                newWord = newWord + x.substring(0, 1) + "ay";
+                pigBrokenSentence.add(newWord);
+            }
+            else
+            {
+                pigBrokenSentence.add(x);
+            }    
+        }
+
+        for(String x : pigBrokenSentence)
+        {
+            pigSentence = pigSentence + " " + x;
+        }
+
+        return pigSentence;
     }
 
 
