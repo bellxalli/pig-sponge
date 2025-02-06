@@ -45,15 +45,16 @@ public class Pig {
 
         for(String x : brokenSentence)
         {   String newWord = "";
-            if(x.charAt(0) != 'a' || x.charAt(0) != 'e' || x.charAt(0) != 'i' || x.charAt(0) != 'o' || x.charAt(0) != 'u') 
+            if(x.charAt(0) == 'a' || x.charAt(0) == 'e' || x.charAt(0) == 'i' || x.charAt(0) == 'o' || x.charAt(0) == 'u') 
             {
-                newWord = x.substring(1, x.length());
-                newWord = newWord + x.substring(0, 1) + "ay";
-                pigBrokenSentence.add(newWord);
+                pigBrokenSentence.add(x);
             }
             else
             {
-                pigBrokenSentence.add(x);
+                
+                newWord = x.substring(1, x.length());
+                newWord = newWord + x.substring(0, 1) + "ay";
+                pigBrokenSentence.add(newWord);
             }    
         }
 
@@ -62,7 +63,7 @@ public class Pig {
             pigSentence = pigSentence + " " + x;
         }
 
-        return pigSentence;
+        return pigSentence.substring(1);
     }
 
 
